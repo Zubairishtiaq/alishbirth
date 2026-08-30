@@ -57,232 +57,6 @@
             100% { transform: translate(-60px, 60px) scale(0.8); opacity: 0.3; }
         }
 
-        /* ============================================================
-           COUNTDOWN SCREEN
-           ============================================================ */
-        #countdownScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(26, 20, 24, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 99999;
-            padding: 30px 20px;
-            transition: opacity 1s ease, visibility 1s ease;
-        }
-
-        #countdownScreen.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .countdown-container {
-            text-align: center;
-            max-width: 700px;
-            width: 100%;
-        }
-
-        .floating-emojis {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .floating-emoji {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.06;
-            animation: floatEmoji 20s infinite linear;
-        }
-
-        .floating-emoji:nth-child(1) { top: 10%; left: 5%; animation-duration: 22s; font-size: 3rem; }
-        .floating-emoji:nth-child(2) { top: 20%; right: 8%; animation-duration: 18s; font-size: 2.5rem; animation-delay: 2s; }
-        .floating-emoji:nth-child(3) { bottom: 30%; left: 10%; animation-duration: 25s; font-size: 3.5rem; animation-delay: 4s; }
-        .floating-emoji:nth-child(4) { bottom: 20%; right: 5%; animation-duration: 20s; font-size: 2.8rem; animation-delay: 1s; }
-        .floating-emoji:nth-child(5) { top: 50%; left: 50%; animation-duration: 28s; font-size: 4rem; animation-delay: 3s; }
-        .floating-emoji:nth-child(6) { top: 5%; left: 50%; animation-duration: 24s; font-size: 2.2rem; animation-delay: 5s; }
-        .floating-emoji:nth-child(7) { bottom: 5%; left: 30%; animation-duration: 26s; font-size: 3rem; animation-delay: 2.5s; }
-        .floating-emoji:nth-child(8) { top: 40%; right: 2%; animation-duration: 21s; font-size: 2rem; animation-delay: 4.5s; }
-
-        @keyframes floatEmoji {
-            0% { transform: translateY(0) rotate(0deg) scale(1); }
-            25% { transform: translateY(-30px) rotate(5deg) scale(1.1); }
-            50% { transform: translateY(-60px) rotate(-5deg) scale(0.9); }
-            75% { transform: translateY(-30px) rotate(3deg) scale(1.05); }
-            100% { transform: translateY(0) rotate(0deg) scale(1); }
-        }
-
-        .countdown-title {
-            font-family: 'Dancing Script', cursive;
-            font-size: 4rem;
-            color: #d4b8a8;
-            margin-bottom: 10px;
-            text-shadow: 0 0 60px rgba(200, 160, 140, 0.1);
-            position: relative;
-            z-index: 1;
-            animation: titlePulse 3s infinite ease-in-out;
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.02); opacity: 0.9; }
-        }
-
-        .countdown-subtitle {
-            font-family: 'Quicksand', sans-serif;
-            font-size: 1.2rem;
-            color: rgba(212, 184, 168, 0.4);
-            margin-bottom: 40px;
-            letter-spacing: 3px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .countdown-grid {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .countdown-item {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(200, 160, 140, 0.08);
-            border-radius: 20px;
-            padding: 25px 30px;
-            min-width: 100px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .countdown-item:hover {
-            border-color: rgba(200, 160, 140, 0.2);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-
-        .countdown-item .number {
-            font-family: 'Space Mono', monospace;
-            font-size: 4rem;
-            font-weight: 700;
-            color: #d4b8a8;
-            display: block;
-            line-height: 1;
-            text-shadow: 0 0 30px rgba(200, 160, 140, 0.05);
-        }
-
-        .countdown-item .number.pulse {
-            animation: numberPulse 1s ease;
-        }
-
-        @keyframes numberPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); color: #f0e0d0; }
-        }
-
-        .countdown-item .label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            color: rgba(212, 184, 168, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-top: 8px;
-            display: block;
-        }
-
-        .countdown-note {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: rgba(212, 184, 168, 0.3);
-            margin-bottom: 20px;
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
-        }
-
-        .countdown-note span {
-            color: #d4b8a8;
-            opacity: 0.6;
-        }
-
-        .countdown-dev {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            color: rgba(212, 184, 168, 0.15);
-            letter-spacing: 2px;
-            border-top: 1px solid rgba(200, 160, 140, 0.04);
-            padding-top: 25px;
-            margin-top: 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .countdown-dev i {
-            color: rgba(212, 184, 168, 0.2);
-            margin: 0 5px;
-        }
-
-        .countdown-dev .highlight {
-            color: rgba(212, 184, 168, 0.25);
-        }
-
-        .lock-icon {
-            font-size: 4rem;
-            color: #d4b8a8;
-            opacity: 0.15;
-            margin-bottom: 20px;
-            animation: lockPulse 2s infinite ease-in-out;
-            position: relative;
-            z-index: 1;
-        }
-
-        @keyframes lockPulse {
-            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.15; }
-            50% { transform: scale(1.05) rotate(5deg); opacity: 0.25; }
-        }
-
-        .sparkle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #d4b8a8;
-            border-radius: 50%;
-            opacity: 0;
-            animation: sparkleAnim 3s infinite;
-            z-index: 0;
-        }
-
-        .sparkle:nth-child(1) { top: 10%; left: 20%; animation-delay: 0s; }
-        .sparkle:nth-child(2) { top: 30%; right: 15%; animation-delay: 0.8s; }
-        .sparkle:nth-child(3) { bottom: 25%; left: 10%; animation-delay: 1.6s; }
-        .sparkle:nth-child(4) { bottom: 40%; right: 20%; animation-delay: 2.4s; }
-        .sparkle:nth-child(5) { top: 50%; left: 50%; animation-delay: 0.4s; }
-        .sparkle:nth-child(6) { top: 15%; right: 35%; animation-delay: 1.2s; }
-        .sparkle:nth-child(7) { bottom: 10%; left: 40%; animation-delay: 2.0s; }
-        .sparkle:nth-child(8) { top: 45%; right: 5%; animation-delay: 0.6s; }
-
-        @keyframes sparkleAnim {
-            0% { opacity: 0; transform: scale(0) translateY(0); }
-            50% { opacity: 0.5; transform: scale(1) translateY(-20px); }
-            100% { opacity: 0; transform: scale(0) translateY(-40px); }
-        }
-
         .gift-wrapper {
             position: relative;
             z-index: 10;
@@ -1223,19 +997,11 @@
         @media (max-width: 992px) {
             .screen-title { font-size: 3rem; }
             .carousel-slide { grid-template-columns: repeat(2, 1fr); }
-            .countdown-title { font-size: 3.2rem; }
-            .countdown-item .number { font-size: 3.2rem; }
         }
 
         @media (max-width: 768px) {
             .screen { padding: 30px 18px; min-height: 70vh; border-radius: 40px 40px 20px 20px; }
             .screen-title { font-size: 2.5rem; }
-            .countdown-title { font-size: 2.8rem; }
-            .countdown-item { padding: 18px 20px; min-width: 70px; }
-            .countdown-item .number { font-size: 2.8rem; }
-            .countdown-grid { gap: 15px; }
-            .countdown-note { font-size: 1.4rem; }
-            .lock-icon { font-size: 3rem; }
             .balloon svg { width: 60px; height: 75px; }
             .balloon-container { gap: 18px 25px; padding: 20px 10px; }
             .cake-3d { transform: scale(0.7); }
@@ -1259,12 +1025,6 @@
         @media (max-width: 480px) {
             .screen { padding: 20px 12px 30px; border-radius: 30px 30px 15px 15px; min-height: 60vh; }
             .screen-title { font-size: 2rem; margin-bottom: 12px; }
-            .countdown-title { font-size: 2.2rem; }
-            .countdown-item { padding: 14px 16px; min-width: 60px; }
-            .countdown-item .number { font-size: 2.2rem; }
-            .countdown-grid { gap: 10px; }
-            .countdown-note { font-size: 1.2rem; }
-            .lock-icon { font-size: 3rem; }
             .balloon svg { width: 50px; height: 63px; }
             .balloon-container { gap: 12px 15px; padding: 15px 5px; }
             .cake-3d { transform: scale(0.5); }
@@ -1299,9 +1059,6 @@
 
         @media (max-width: 380px) {
             .screen-title { font-size: 1.6rem; }
-            .countdown-title { font-size: 1.8rem; }
-            .countdown-item { padding: 10px 12px; min-width: 50px; }
-            .countdown-item .number { font-size: 1.8rem; }
             .balloon svg { width: 40px; height: 52px; }
             .balloon-container { gap: 8px 10px; }
             .snake-slide { min-width: 90px; height: 120px; }
@@ -1321,70 +1078,6 @@
     </style>
 </head>
 <body>
-
-    <!-- ============================================================
-        COUNTDOWN SCREEN
-    ============================================================ -->
-    <div id="countdownScreen">
-        <div class="floating-emojis">
-            <div class="floating-emoji">🎈</div>
-            <div class="floating-emoji">🎂</div>
-            <div class="floating-emoji">🎁</div>
-            <div class="floating-emoji">🎉</div>
-            <div class="floating-emoji">✨</div>
-            <div class="floating-emoji">🎊</div>
-            <div class="floating-emoji">💖</div>
-            <div class="floating-emoji">🌟</div>
-        </div>
-
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-
-        <div class="countdown-container">
-            <div class="lock-icon">🔒</div>
-            <h1 class="countdown-title">Coming Soon</h1>
-            <p class="countdown-subtitle">The birthday celebration awaits</p>
-
-            <div class="countdown-grid">
-                <div class="countdown-item">
-                    <span class="number" id="countdownDays">00</span>
-                    <span class="label">Days</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="number" id="countdownHours">00</span>
-                    <span class="label">Hours</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="number" id="countdownMinutes">00</span>
-                    <span class="label">Mins</span>
-                </div>
-                <div class="countdown-item">
-                    <span class="number" id="countdownSeconds">00</span>
-                    <span class="label">Secs</span>
-                </div>
-            </div>
-
-            <p class="countdown-note">
-                🎂 <span>until the magic begins</span> 🎂
-            </p>
-
-            <div class="countdown-dev">
-                <i class="fas fa-code"></i>
-                <span class="highlight">✦</span>
-                <i class="fas fa-heart" style="color: rgba(212,184,168,0.15);"></i>
-                <span class="highlight">✦</span>
-                <i class="fas fa-gift"></i>
-                <br />
-                <span style="font-size: 0.7rem; opacity: 0.5;">To see this earlier, contact the developer</span>
-            </div>
-        </div>
-    </div>
 
     <!-- ============================================================
         MAIN WEBSITE
@@ -1540,33 +1233,12 @@
         (function() {
             'use strict';
 
-            const countdownAudio = new Audio('firstaudio.mp3'); // Audio for countdown screen
-            const balloonsAudio = new Audio('ballonaudio.mp3');   // Audio for balloons screen
-            
-            // Preload audio
-            countdownAudio.load();
-            balloonsAudio.load();
-            
-            // Set loop for balloons audio
+            // ============================================================
+            // AUDIO PLAYER - BALLOONS SCREEN
+            // ============================================================
+            const balloonsAudio = new Audio('bballonaudio.mp3');
             balloonsAudio.loop = true;
-            
-            let isCountdownAudioPlaying = false;
             let isBalloonsAudioPlaying = false;
-
-            function playCountdownAudio() {
-                if (!isCountdownAudioPlaying) {
-                    countdownAudio.play().catch(e => console.log('Audio play prevented:', e));
-                    isCountdownAudioPlaying = true;
-                }
-            }
-
-            function stopCountdownAudio() {
-                if (isCountdownAudioPlaying) {
-                    countdownAudio.pause();
-                    countdownAudio.currentTime = 0;
-                    isCountdownAudioPlaying = false;
-                }
-            }
 
             function playBalloonsAudio() {
                 if (!isBalloonsAudioPlaying) {
@@ -1575,76 +1247,8 @@
                 }
             }
 
-            function stopBalloonsAudio() {
-                if (isBalloonsAudioPlaying) {
-                    balloonsAudio.pause();
-                    balloonsAudio.currentTime = 0;
-                    isBalloonsAudioPlaying = false;
-                }
-            }
-
-            // ============================================================
-            // COUNTDOWN LOGIC
-            // ============================================================
-            const countdownScreen = document.getElementById('countdownScreen');
-            const targetDate = new Date('2026-08-31T00:00:00').getTime();
-
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const diff = targetDate - now;
-
-                if (diff <= 0) {
-                    // Hide countdown, show website
-                    countdownScreen.classList.add('hidden');
-                    stopCountdownAudio();
-                    // Start balloons audio when countdown ends
-                    playBalloonsAudio();
-                    return;
-                }
-
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-                const daysEl = document.getElementById('countdownDays');
-                const hoursEl = document.getElementById('countdownHours');
-                const minutesEl = document.getElementById('countdownMinutes');
-                const secondsEl = document.getElementById('countdownSeconds');
-
-                if (daysEl.textContent !== String(days).padStart(2, '0')) {
-                    daysEl.textContent = String(days).padStart(2, '0');
-                    daysEl.classList.remove('pulse');
-                    void daysEl.offsetWidth;
-                    daysEl.classList.add('pulse');
-                }
-                if (hoursEl.textContent !== String(hours).padStart(2, '0')) {
-                    hoursEl.textContent = String(hours).padStart(2, '0');
-                    hoursEl.classList.remove('pulse');
-                    void hoursEl.offsetWidth;
-                    hoursEl.classList.add('pulse');
-                }
-                if (minutesEl.textContent !== String(minutes).padStart(2, '0')) {
-                    minutesEl.textContent = String(minutes).padStart(2, '0');
-                    minutesEl.classList.remove('pulse');
-                    void minutesEl.offsetWidth;
-                    minutesEl.classList.add('pulse');
-                }
-                if (secondsEl.textContent !== String(seconds).padStart(2, '0')) {
-                    secondsEl.textContent = String(seconds).padStart(2, '0');
-                    secondsEl.classList.remove('pulse');
-                    void secondsEl.offsetWidth;
-                    secondsEl.classList.add('pulse');
-                }
-
-                countdownScreen.classList.remove('hidden');
-                
-                // Play countdown audio if not already playing
-                playCountdownAudio();
-            }
-
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+            // Auto-play audio when page loads
+            playBalloonsAudio();
 
             // ============================================================
             // CONFETTI
@@ -2117,12 +1721,12 @@
                     e.target.closest('.carousel-wrapper') || e.target.closest('.letter-box') ||
                     e.target.closest('.carousel-dot') ||
                     e.target.closest('.celebration-card') || e.target.closest('.snake-slide') ||
-                    e.target.closest('.nav-controls') || e.target.closest('.countdown-container')) return;
+                    e.target.closest('.nav-controls')) return;
                 burstConfetti(10);
             });
 
-            console.log('🎂 Complete Birthday experience with countdown and audio!');
-            console.log('📢 To add audio: replace "countdown-music.mp3" and "birthday-music.mp3" with your files');
+            console.log('🎂 Birthday experience with balloons audio!');
+            console.log('📢 Audio: bballonaudio.mp3 is playing in loop');
         })();
     </script>
 
